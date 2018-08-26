@@ -1,0 +1,1 @@
+{"caller":"server_adapter_go.go:69","error":"listen tcp 127.0.0.1:9000: bind: address already in use","lvl":"crit","module":"revel","msg":"Failed to listen:","section":"server","t":"2018-08-26T07:26:05.416189891-07:00"}
