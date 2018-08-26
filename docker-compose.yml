@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+
+  todo-manager-db:
+    image: mongo
+
+  todo-manager-backend:
+    image: todo-manager-backend
+    ports:
+      - 9000:9000
+    depends_on:
+      - todo-manager-db
+    environment:
+      - TM_CONFIG_MONGODB_SERVER=todo-manager-db
+      - TM_CONFIG_MONGODB_PORT=27017
+      - TM_CONFIG_MONGODB_DATABASE_NAME=todo-manager
+
+  todo-manager-db-viewer:
+    image: mongo-express
+    environment:
+    - ME_CONFIG_MONGODB_SERVER=todo-manager-db
+    - ME_CONFIG_MONGODB_PORT=27017
+    ports:
+    - 8081:8081
+    depends_on:
+      - todo-manager-db
